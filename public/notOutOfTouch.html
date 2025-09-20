@@ -1,19 +1,100 @@
 <!DOCTYPE html>
-
-<video controls width="640">
-  <source src="/getVideo" type="video/mp4">
-  Your browser does not support HTML video.
-</video>
-
 <html lang="en">
+
+<img src="/getPicture" alt="background" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;"
+  >
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>it's not out of touch thursday</title>
     
 </head>
+  <script>
+    
+
+
+
+  </script>
 <body>
-    
-    
+
+
+  <div id="app" style="
+  position: fixed;
+  top: 50%;
+  left: 50%;
+">
+</div>
+
+  <script>
+  const app = document.querySelector("#app")
+
+    function fetchCountdown() {
+      return fetch("/countdown")
+      .then(response => {
+        return response.json()
+      })
+    }
+    async function setupCountdown(){
+      const contDownContainer = document.createElement("div");    
+      contDownContainer.classList.add("container")
+
+      contDownContainer.style.display = "flex";          
+      contDownContainer.style.flexDirection = "column";  
+      contDownContainer.style.alignItems = "center";     
+      contDownContainer.style.backgroundColor = "lightblue"; 
+      contDownContainer.style.borderRadius = "10px";
+      contDownContainer.style.gap = "10px";              
+      contDownContainer.style.color = "black";
+      contDownContainer.style.padding = "20px";         
+
+
+      const countdown = await fetchCountdown();
+
+      const header = document.createElement("div")
+      const title = document.createElement("h2")
+      title.textContent = "time until it is out of touch thirsday"
+
+      const numbersRow = document.createElement("div")
+      numbersRow.style.display = "flex";
+      numbersRow.style.gap = "15px"; 
+
+      const days = document.createElement("p")
+      days.textContent = `days: ${countdown.days || 0}` 
+      const hours = document.createElement("p")
+      hours.textContent = `hours: ${countdown.hours || 0}` 
+      const minutes = document.createElement("p")
+      minutes.textContent = `minutes: ${countdown.minutes || 0}` 
+      const seconds = document.createElement("p")
+      seconds.textContent = `seconds: ${countdown.seconds || 0}` 
+      
+      
+      header.appendChild(title)
+      numbersRow.appendChild(days)
+      numbersRow.appendChild(hours)
+      numbersRow.appendChild(minutes)
+      numbersRow.appendChild(seconds)
+      contDownContainer.appendChild(header)
+      contDownContainer.appendChild(numbersRow)
+      return contDownContainer; 
+    }
+
+    async function displayCountdown(){
+      const countdown = await setupCountdown();
+      app.innerHTML = ""; 
+      app.appendChild(countdown)
+    }
+
+    setInterval(displayCountdown,1000)
+
+  </script>   
+
 </body>
 </html>
