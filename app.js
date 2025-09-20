@@ -48,6 +48,10 @@ app.get("/getPicture", (req,res) =>{
     res.sendFile(__dirname + "/public/frondendpicture3.jpg")
 })
 
+app.get("/test", (req,res) => {
+    res.sendFile(__dirname + "/public/outOfTouch.html")
+})
+
 const PORT = 8080; 
 app.listen(PORT, () => {
     console.log("app startet on", PORT); 
