@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "standard": "^17.1.2"
   }
 }

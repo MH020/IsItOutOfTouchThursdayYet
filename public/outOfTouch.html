@@ -7,10 +7,48 @@
 
 </head>
 <body>
+  <style>
+  body {
+    margin: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black; 
+  }
+
+  video {
+    max-width: 90%;
+    max-height: 90%;
+  }
+</style>
+
+    <div id="app" style="
+  position: fixed;
+  top: 20%;
+  left: 40%;
+">
+</div>
 
 <video autoplay loop controls>
   <source src="/getVideo" type="video/mp4">
 </video>
+
+<script>
+  const app = document.querySelector("#app")
+
+  const titleContainer = document.createElement("div")
+  const title = document.createElement("h2")
+  title.textContent = "IT'S OUT OF TOUCH THURSDAY!!!!!!"
+  titleContainer.appendChild(title)
+
+  function changeRandomColor() {
+    const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`
+    title.style.color = randomColor
+  }
+  setInterval(changeRandomColor, 1000)
+  app.appendChild(titleContainer)
+</script>
 
 </body>
 </html>
