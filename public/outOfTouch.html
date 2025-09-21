@@ -7,15 +7,18 @@
 
 </head>
 <body>
+  
   <style>
   body {
     margin: 0;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black; 
+    background: url('https://media1.tenor.com/m/O4PcET173vgAAAAd/severance-severance-dance.gif') no-repeat center center;
+    background-size: cover; 
   }
+  
 
   video {
     max-width: 90%;
@@ -30,9 +33,15 @@
 ">
 </div>
 
-<video autoplay loop controls>
-  <source src="/getVideo" type="video/mp4">
-</video>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/UlL2qSp1R00"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
 
 <script>
   const app = document.querySelector("#app")
